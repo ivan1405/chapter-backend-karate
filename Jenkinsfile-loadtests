@@ -3,7 +3,7 @@ pipeline {
     agent { label "master" }
 
     tools {
-        maven 'Maven-LATEST'
+        maven 'Maven-3.8.4'
     }
 
     parameters {
