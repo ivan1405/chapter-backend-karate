@@ -1,0 +1,10 @@
+{
+  "simulation": "com.chapter.backend.LoadTestSimulation",
+  "simulationId": "loadtestsimulation",
+  "start": 1646397339823,
+  "description": "",
+  "scenarios": ["Chapter Backend Simulation"],
+  "assertions": [
+
+  ]
+}
