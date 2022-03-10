@@ -1,0 +1,41 @@
+pipeline {
+
+    agent { label "master" }
+
+    tools {
+        maven 'Maven-LATEST'
+    }
+
+    parameters {
+        choice(
+                choices: ['dev', 'preprod'],
+                description: 'Choose an environment please',
+                name: 'Environment'
+        )
+    }
+
+    stages {
+
+        stage('Maven build') {
+            steps {
+                sh "mvn clean"
+            }
+        }
+
+        stage('test') {
+            steps {
+                script {
+                    sh "mvn test -Denv=${params.Environment}"
+                }
+            }
+        }
+
+        stage('generate reports') {
+            steps {
+                cucumber buildStatus: "UNSTABLE",
+                fileIncludePattern: "**/*.json",
+                jsonReportDirectory: "target"
+            }
+        }
+    }
+}
