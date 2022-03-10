@@ -8,7 +8,7 @@ pipeline {
 
     parameters {
         choice(
-                choices: ['dev', 'preprod'],
+                choices: ['local',''dev', 'preprod'],
                 description: 'Choose an environment please',
                 name: 'Environment'
         )
