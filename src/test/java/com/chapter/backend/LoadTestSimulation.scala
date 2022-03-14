@@ -13,7 +13,7 @@ class LoadTestSimulation extends Simulation {
   }
 
   val rampUsersCount: Int = Properties.propOrElse("rampUpUsers", "20").toInt
-  val rampDuration: Int = Properties.propOrElse("DrampUpDuration", "5").toInt
+  val rampDuration: Int = Properties.propOrElse("rampUpDuration", "5").toInt
 
   val chapterBackendTest: ScenarioBuilder =
     scenario("Chapter Backend Simulation")
