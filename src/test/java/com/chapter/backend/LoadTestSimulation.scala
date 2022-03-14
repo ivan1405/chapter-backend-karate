@@ -15,7 +15,8 @@ class LoadTestSimulation extends Simulation {
   val rampUsersCount: Int = Properties.propOrElse("rampUsers", "20").toInt
   val rampDuration: Int = Properties.propOrElse("rampDuration", "5").toInt
 
-  val tasklistManagementTest: ScenarioBuilder = scenario("Chapter Backend Simulation")
+  val tasklistManagementTest: ScenarioBuilder =
+    scenario("Chapter Backend Simulation")
     .exec(
       karateFeature("classpath:features/crud.feature")
     )
@@ -27,5 +28,4 @@ class LoadTestSimulation extends Simulation {
   after {
     println("Chapter Backend Load Tests finished!!")
   }
-
 }

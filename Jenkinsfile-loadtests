@@ -35,7 +35,10 @@ pipeline {
         stage('Load test') {
             steps {
                 script {
-                    sh "mvn gatling:test -Denv=${params.Environment} -DrampUpUsers=${params.RAMP_USERS} -DrampUpDuration=${params.RAMP_DURATION}"
+                    sh "mvn gatling:test
+                    -Denv=${params.Environment}
+                    -DrampUpUsers=${params.RAMP_USERS}
+                    -DrampUpDuration=${params.RAMP_DURATION}"
                 }
             }
         }

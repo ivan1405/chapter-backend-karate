@@ -8,20 +8,18 @@ pipeline {
 
     parameters {
         choice(
-                choices: ['local','dev', 'preprod'],
+                choices: ['local', 'dev', 'preprod'],
                 description: 'Choose an environment please',
                 name: 'Environment'
         )
     }
 
     stages {
-
-        stage('Maven build') {
+        stage('build') {
             steps {
-                sh "mvn clean"
+                sh "mvn clean compile"
             }
         }
-
         stage('test') {
             steps {
                 script {
@@ -29,7 +27,6 @@ pipeline {
                 }
             }
         }
-
         stage('generate reports') {
             steps {
                 cucumber buildStatus: "UNSTABLE",
