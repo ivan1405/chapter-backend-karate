@@ -1,3 +1,4 @@
+@ignore
 Feature: POST brand operation
 
   Background:

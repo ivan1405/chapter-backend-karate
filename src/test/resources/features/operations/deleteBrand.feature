@@ -5,7 +5,7 @@ Feature: Just get a single brand
 
     * url apiBasePath
 
-  Scenario: get brand should return 200
+  Scenario: delete brand should return 204
     Given path 'brands', id
-    When method GET
-    Then status 200
+    When method DELETE
+    Then status 204
