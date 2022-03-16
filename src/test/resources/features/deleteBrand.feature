@@ -3,23 +3,17 @@ Feature: Test get brands operations
   Background:
 
     * url apiBasePath
+    * def postBrandResult = call read('operations/postBrand.feature') { name: 'to be deleted', description: 'some description' }
+    * def brandId = postBrandResult.response.id
 
-  Scenario Outline: create a new brand should return 201
+  Scenario: delete a brand
 
-    Given path 'brands'
-    And request { name: <name>, description: <description>}
-    When method POST
-    Then status 201
+    Given path 'brands', brandId
+    When method DELETE
+    Then status 204
 
-    # assert response this way
-    And match $ == { id: #number, name: <name>, description: <description>}
-
-    # or like this
-    And match $.id == '#number'
-    And match $.name == '<name>'
-    And match $.description == '<description>'
-
-    Examples:
-      | name     | description                             |
-      | Mercedes | Cool cars made by our german colleagues |
-      | Seat     | This ones are spanish                   |
+    # check it's been deleted
+    Given path 'brands', brandId
+    When method GET
+    Then status 404
+    And match $ == { httpStatus: 'NOT_FOUND', description: '#("No brand was found with id " + brandId)'}

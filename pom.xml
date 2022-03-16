@@ -42,15 +42,10 @@
         </dependency>
 
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.6</version>
-        </dependency>
-
-        <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>${cucumber-reporting.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
